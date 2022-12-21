@@ -1,22 +1,24 @@
-# Github doesn't support YAML anchoring yet: https://github.community/t/support-for-yaml-anchors/16128
 on:
   pull_request:
     branches:
     - main
     - 'release/**'
+    - 'cicd/**'
     - dev
-
+  workflow_call:
+  
 jobs:
-  test-bot:
+  test:
+    name: Test bot
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Run unit tests
-        run: |
-          # Going straight into running Docker build, since the build also includes running our
-          # unit tests
-
-          export IMAGE_NAME="${{ github.repository }}:${GITHUB_RUN_ID}_${GITHUB_RUN_ATTEMPT}"
-
-          docker build -t ${IMAGE_NAME} .
+        uses: actions/checkout@v3
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.18
+      - name: Test codebase
+        run: go test -v ./...
+      - name: Check codebase builds successfully
+        run: go build -v ./...
