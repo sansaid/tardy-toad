@@ -1,0 +1,1 @@
+github.com/sansaid/sponty github.com/sansaid/${repo_name}

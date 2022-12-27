@@ -1,0 +1,1 @@
+/usr/local/bin/sponty /usr/local/bin/${repo_name}

@@ -1,0 +1,9 @@
+- files: go.mod,main.go
+  from: github.com/sansaid/sponty
+  to: github.com/sansaid/${repo_name}
+- files: Dockerfile
+  from: /usr/local/bin/sponty
+  to: /usr/local/bin/${repo_name}
+- files: README.md
+  from: <!-- mod_some_description -->(.*)<!-- /mod_some_description -->
+  to: <!-- mod_some_description -->${repo_description}<!-- /mod_some_description --> # Needs to preserve new lines somehow
