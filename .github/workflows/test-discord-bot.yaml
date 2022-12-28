@@ -11,6 +11,9 @@ jobs:
   test:
     name: Test bot
     runs-on: ubuntu-latest
+    defaults:
+        run:
+          working-directory: apps/discord-bot
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
