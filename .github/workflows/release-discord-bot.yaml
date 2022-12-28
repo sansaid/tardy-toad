@@ -11,7 +11,7 @@ env:
 jobs:
   test:
     name: Test bot
-    uses: ./.github/workflows/test.yaml
+    uses: ./.github/workflows/test-discord-bot.yaml
   deploy:
     name: Deploy bot
     runs-on: ubuntu-latest
